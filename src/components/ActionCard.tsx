@@ -1,5 +1,6 @@
 import { QuickActionType } from "@/constants";
 import { Card } from "./ui/card";
+import { clsx } from "clsx";
 
 
 function ActionCard({ action, onClick }: { action: QuickActionType; onClick: () => void }) {
@@ -10,7 +11,7 @@ function ActionCard({ action, onClick }: { action: QuickActionType; onClick: () 
     >
       {/* ACTION GRADIENT */}
       <div
-        className={`absolute inset-0 bg-gradient-to-br ${action.gradient} opacity-100 group-hover:opacity-50 transition-opacity`}
+        className={clsx(`absolute inset-0 bg-gradient-to-br bg-${action.gradient} opacity-100 group-hover:opacity-50 transition-opacity`)}
       />
 
       {/* ACTION CONTENT WRAPPER */}
@@ -18,9 +19,9 @@ function ActionCard({ action, onClick }: { action: QuickActionType; onClick: () 
         <div className="space-y-3">
           {/* ACTION ICON */}
           <div
-            className={`w-12 h-12 rounded-full flex items-center justify-center bg-${action.color}/10 group-hover:scale-110 transition-transform`}
+            className={clsx(`w-12 h-12 rounded-full flex items-center justify-center bg-${action.color}/10 group-hover:scale-110 transition-transform`)}
           >
-            <action.icon className={`h-6 w-6 text-${action.color}`} />
+            <action.icon className={clsx(`h-6 w-6 text-${action.color}`)} />
           </div>
 
           {/* ACTION DETAILS */}
