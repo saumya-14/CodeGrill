@@ -7,15 +7,15 @@ import { ModeToggle } from "./ModeToggle";
 
 function Navbar() {
   return (
-    <nav className="border-b">
-      <div className="flex h-16 items-center px-4 container mx-auto">
-        {/* LEFT SIDE -LOGO */}
+    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-16 items-center">
+        {/* LEFT SIDE - LOGO */}
         <Link
           href="/"
-          className="flex items-center gap-2 font-semibold text-2xl mr-6 font-mono hover:opacity-80 transition-opacity"
+          className="flex items-center gap-2 font-semibold text-2xl mr-6 font-mono hover:opacity-80 transition-all duration-200 hover:scale-[1.02]"
         >
-          <CodeIcon className="size-8 text-emerald-500" />
-          <span className="bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">
+          <CodeIcon className="size-8 text-primary" />
+          <span className="gradient-text">
             CodeGrill
           </span>
         </Link>
@@ -24,12 +24,23 @@ function Navbar() {
         <SignedIn>
           <div className="flex items-center space-x-4 ml-auto">
             <DasboardBtn />
-            <ModeToggle />
-            <UserButton />
+            <div className="flex items-center gap-2">
+              <ModeToggle />
+              <div className="button-hover">
+                <UserButton 
+                  appearance={{
+                    elements: {
+                      avatarBox: "size-8"
+                    }
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </SignedIn>
       </div>
     </nav>
   );
 }
+
 export default Navbar;
